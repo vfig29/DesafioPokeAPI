@@ -8,14 +8,14 @@ class APIManager {
         .get(Uri.https('pokeapi.co', '/api/v2/pokemon/' + entry.toString())));
   }
 
-  PokemonJSONOBJ apiResponseValidator(http.Response requestResponse) {
+  Future<PokemonJSONOBJ> apiResponseValidator(
+      http.Response requestResponse) async {
     switch (requestResponse.statusCode) {
       case 200:
         return PokemonJSONOBJ.createFromJSON(jsonDecode(requestResponse.body));
         break;
       default:
-        print('caiu no default');
-        return null;
+        return Future.error("Pokemon not Found.");
     }
   }
 }

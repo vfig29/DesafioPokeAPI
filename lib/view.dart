@@ -18,6 +18,10 @@ class _ViewState extends State<PokeView> {
           FutureBuilder<PokemonJSONOBJ>(
               future: pokeController.loadedPokemon,
               builder: (context, snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return CircularProgressIndicator();
+                }
+
                 if (snapshot.hasData) {
                   print("tem");
                   return Container(
@@ -36,6 +40,8 @@ class _ViewState extends State<PokeView> {
                       ],
                     ),
                   );
+                } else if (snapshot.hasError) {
+                  print('erro');
                 } else {
                   print("n tem");
                 }
