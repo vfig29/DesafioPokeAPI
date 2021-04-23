@@ -1,5 +1,9 @@
 class PokemonJSONOBJ {
-  PokemonJSONOBJ.fromJSON(Map<String, dynamic> jsonMap) {
-    print("");
+  String pokeName;
+  String mainSpriteUrl;
+
+  PokemonJSONOBJ.createFromJSON(Map<String, dynamic> jsonMap) {
+    pokeName = jsonMap['name'];
+    mainSpriteUrl = jsonMap['sprites']['front_default'];
   }
 }
