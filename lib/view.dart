@@ -8,6 +8,7 @@ class PokeView extends StatefulWidget {
 }
 
 class _ViewState extends State<PokeView> {
+  //
   PokeController pokeController = new PokeController();
   @override
   Widget build(BuildContext context) {
